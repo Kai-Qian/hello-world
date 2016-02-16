@@ -1,0 +1,35 @@
+{% extends "home-base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container" style="padding-top:60px;">
+        <div class="row row-content">
+            <div class="card-columns">
+                {% for posting in postings %}
+                    <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+                        <div class="card-block">
+                            <a class="card-title" href="{% url 'follow' posting.user %}">
+                                {% if posting.user.profile.picture %}
+                                    <img src="{{ posting.user.profile.picture.url }}" class="img-rotate img-user"/>
+                                {% endif %}
+                                {{ posting.user }}:
+                                <input type="hidden" name="user" value="{{ posting.user }}">
+                            </a>
+                            <p class="card-text">{{ posting.text }}</p>
+                            <p class="card-text" style="display: inline;">
+                                <small class="text-muted">{{ posting.dateAndTime }}</small>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block active1 %}
+    class="active"
+{% endblock %}
+
+{% block background %}
+    <script src="{% static 'js/check.js' %}"></script>
+{% endblock %}
