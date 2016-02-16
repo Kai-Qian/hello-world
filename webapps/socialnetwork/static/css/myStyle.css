@@ -1,0 +1,122 @@
+.content {
+    padding: 100px 0 100px 0;
+}
+
+h1.title {
+    font-family: 'Arial Black';
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    font-weight: 100;
+}
+
+p.subtitle {
+    text-align: center;
+    color: white;
+}
+
+li.warning {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    color: red;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    font-weight: 100;
+    color: white;
+}
+
+a.brand {
+    font-size: 30px;
+    font-weight: normal;
+}
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+strong {
+    font-weight: 500;
+}
+
+.form-box {
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.form-top {
+    overflow: hidden;
+    padding: 10px 25px 10px 25px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 5px 5px 0 0;
+}
+
+.form-top-left {
+    float: left;
+    width: 75%;
+}
+
+.form-top-left h3 {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: left;
+}
+
+.form-top-left p {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    text-align: left;
+}
+
+.form-top-right {
+    float: right;
+    width: 25%;
+    padding-top: 10px;
+    text-align: right;
+    font-size: 80px;
+    color: white;
+    opacity: 0.3;
+}
+
+.form-bottom {
+    padding: 25px 25px 30px 25px;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: left;
+    border-radius: 0 0 5px 5px;
+}
+
+.form-bottom form button.btn {
+    width: 100%;
+}
+
+.form-bottom form .input-error {
+    border-color: red;
+}
+
+
+.img-rotate {
+    transform:rotate(180deg);
+}
+
+.img-user {
+    display: inline-block;
+    max-width: 20%;
+    height: auto;
+    padding: 1px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}

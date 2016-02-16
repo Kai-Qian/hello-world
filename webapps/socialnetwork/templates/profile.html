@@ -1,0 +1,62 @@
+{% extends "home-base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container" style="padding-top: 60px;">
+        <h1 class="page-header">{{ user.username }}'s Profile</h1>
+        <div class="row">
+            <div class="col-md-4 col-sm-8 col-xs-12">
+                {% if profile.picture %}
+                    <img src="{{ profile.picture.url }}" class="img-rotate img-circle img-thumbnail"/>
+                {% endif %}
+                <h2>User info</h2>
+
+                <form class="form-horizontal" id="update" action="{% url 'editprofile' %}" method="post" enctype="multipart/form-data">
+                    {% for user in user_form.visible_fields %}
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">{{ user.label }}: </label>
+                            <p class="col-sm-8">{{ user }}</p>
+                            {% for error in user.errors %}
+                                <span style="color:red"> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    {% for profile in profile_form.visible_fields %}
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">{{ profile.label }}: </label>
+                            {% if profile.label == 'Picture' %}
+                                <p class="col-sm-8"><input id="id_picture" name="picture" type="file" /> </p>
+                                {% for error in profile.errors %}
+                                    <span style="color:red"> {{ error }} </span>
+                                {% endfor %}
+                            {% else %}
+                                <p class="col-sm-8">{{ profile }}</p>
+                                {% for error in profile.errors %}
+                                    <span style="color:red"> {{ error }} </span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary btn-sm" form="update">Update</button>
+                    {% csrf_token %}
+                </form>
+{#                <a class="btn btn-danger btn-sm" href="{% url 'logout' %}">Logout</a>#}
+            </div>
+            <div class="col-md-8 col-sm-4 col-xs-12">
+                <h2>Posting history</h2>
+                {% for posting in postings %}
+                    <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+                        <div class="card-block">
+                            <h4 class="card-title">{{ posting.user }}:</h4>
+                            <p class="card-text">{{ posting.text }}</p>
+                            <p class="card-text"><small class="text-muted">{{ posting.dateAndTime }}</small></p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block active3 %}
+    active
+{% endblock %}

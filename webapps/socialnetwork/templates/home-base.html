@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block nav %}
+    <nav class="navabr navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="brand" href="{% url 'home' %}">Connection</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li {% block active1 %}{% endblock %}><a href="{% url 'home' %}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                    <li {% block active2 %}{% endblock %}><a href="#postModal" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> Post</a></li>
+                    <li class="dropdown {% block active3 %}{% endblock %}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="glyphicon glyphicon-user"></i> Profile </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'profile' %}">Account</a></li>
+                            <li><a href="{% url 'followerStream' %}">Followings</a></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block modal %}
+    <div id="postModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">New posting</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form center-block" action="{% url 'post' %}" method="post" id="formpost">
+                        <div class="form-group">
+                        <textarea oninput="size(this);" class="form-control input-lg" autofocus form="formpost" name="post"
+                                  placeholder="What do you want to share?"></textarea>
+                            <small><span id="span">0</span>/160</small>
+                        </div>
+                        {% csrf_token %}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" form="formpost">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block background %}
+    <script src="{% static 'js/check.js' %}"></script>
+{% endblock %}
